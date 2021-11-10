@@ -24,3 +24,18 @@ class Token(BaseModel):
 
 class TokenData (BaseModel):
     username: Optional[str] = None
+
+class BloodSugar(BaseModel):
+    mealtype: str
+    time: str
+    date: str
+    bloodsugar: int
+
+class MyExerciseData(BaseModel):
+    minute: str
+    date: str
+
+class UpdateMyExerciseData(BaseModel):
+    exercise: str
+    done: bool
+    date: str
