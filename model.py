@@ -33,6 +33,7 @@ class BloodSugar(BaseModel):
 
 class MyExerciseData(BaseModel):
     minute: str
+    intensity: str
     date: str
 
 class UpdateMyExerciseData(BaseModel):

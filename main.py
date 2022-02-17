@@ -124,7 +124,12 @@ async def post_myexercise(myexercise: MyExerciseData, username: str):
     collection = db.exercise
     c = collection.find_one({ "date":exercise_object['date']})
     if (c):
-        exercise_update = await update_Myexercise(username, exercise_object['minute'], exercise_object['date'])
+        exercise_update = await update_Myexercise(
+            username, 
+            exercise_object['minute'], 
+            exercise_object['intensity'], 
+            exercise_object['date']
+        )
     else:
         response = await create_myexercise(myexercise.dict(), username)
         if response:
@@ -137,7 +142,7 @@ async def get_myexercise(username):
     response = await fetch_all_myexercise(username)
     return response
 
-@app.put('/api/update_myexercise/{username}/{exercise}/{date}/{done}')
+@app.put('/api/update_myexercise/{username}/{exercise}/{intensity}/{date}/{done}')
 async def update_myexercise(username: str, exercise: str, date: str, done: bool):
     response = await update_Myexercise(username,exercise, date, done)
     return response

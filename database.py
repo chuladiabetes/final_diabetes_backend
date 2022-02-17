@@ -76,11 +76,11 @@ async def fetch_all_myexercise(username):
         myexercise.append(MyExerciseData(**document))
     return myexercise
 
-async def update_Myexercise(username, minute, date):
+async def update_Myexercise(username, minute, intensity, date):
     db = client[username]
     collection = db.exercise
     document = await collection.update_one({"date":date},
-                                    {"$set": {"minute":minute}}
+                                    {"$set": {"minute":minute, "intensity": intensity}}
     )
     print("document", document)
     # # exercise = await collection.update_one(
